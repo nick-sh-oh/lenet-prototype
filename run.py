@@ -137,9 +137,9 @@ class DigitCaptureApp:
             print("Captured digit as 28x28 matrix (normalized 0-1):")
             print("="*50)
             
-            # Print with formatting
+            # Print with formatting (using format() for compatibility)
             for row in mnist_array:
-                print(' '.join([f'{val:.2f}' for val in row]))
+                print(' '.join(['{:.2f}'.format(val) for val in row]))
             
             # Also print a visual representation
             print("\nVisual representation:")
@@ -193,7 +193,7 @@ class DigitCaptureApp:
         remaining = max(0, 30 - int(elapsed))
         
         # Update timer text
-        self.canvas.itemconfig(self.timer_text, text=f"Time: {remaining}s")
+        self.canvas.itemconfig(self.timer_text, text="Time: {}s".format(remaining))
         
         if elapsed >= 30:
             self.reset_canvas()
